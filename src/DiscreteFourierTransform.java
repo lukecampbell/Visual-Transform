@@ -100,7 +100,7 @@ public class DiscreteFourierTransform {
 				else
 					C = Math.sqrt(2.0/(N*1.0));
 				A[i][j] = C * Math.cos(((2.0 * j + 1.0) * i * Math.PI)/(8.0));
-//				System.out.print(A[i][j]+" ");
+
     		}
 //    		System.out.println();
     	}
@@ -142,7 +142,3 @@ public class DiscreteFourierTransform {
     }
 
 }
-
-
-//Copyright © 2000–2011, Robert Sedgewick and Kevin Wayne. 
-//Last updated: Wed Feb 9 09:20:16 EST 2011.
