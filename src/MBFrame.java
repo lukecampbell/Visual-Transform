@@ -4,8 +4,13 @@ import javax.swing.JFrame;
 
 
 public class MBFrame extends JFrame {
-	public MBFrame() {
-		setTitle("Macro Block");
+	private static final long serialVersionUID = 8394045195876396747L;
+	/**
+	 * Constructs a window consisting of a generic 4x4 layout
+	 * @param title Desired title of the JFrame
+	 */
+	public MBFrame(String title) {
+		setTitle(title);
 		setLayout(new GridLayout(4,4));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
@@ -13,21 +18,40 @@ public class MBFrame extends JFrame {
 		setSize(300,300);
 		repaint();
 	}
-	public MBFrame(int[][] block)
+	/**
+	 * Construct the window using block.
+	 * @param block An NxN matrix of integer values
+	 * @param title Desired title of the JFrame
+	 */
+	public MBFrame(int[][] block, String title)
 	{
-		this();
+		this(title);
 		buildMB(block);
 	}
-	public MBFrame(long[][] block)
+	/**
+	 * Construct the window using block.
+	 * @param block An NxN matrix of long values
+	 * @param title Desired title of the JFrame
+	 */
+	public MBFrame(long[][] block, String title)
 	{
-		this();
+		this(title);
 		buildMB(block);
 	}
-	public MBFrame(double[][] block)
+	/**
+	 * Construct the window using block.
+	 * @param block An NxN matrix of double values
+	 * @param title Desired title of the JFrame
+	 */
+	public MBFrame(double[][] block, String title)
 	{
-		this();
+		this(title);
 		buildMB(block);
 	}
+	/**
+	 * Constructs the window based on the values in block
+	 * @param block NxN matrix of integers
+	 */
 	public void buildMB(int[][] block)
 	{
 		int N = block.length;
@@ -39,6 +63,10 @@ public class MBFrame extends JFrame {
 				add(new BlockPanel(block[i][j]));
 		repaint();
 	}
+	/**
+	 * Constructs the window based on the values in block
+	 * @param block NxN matrix of longs
+	 */
 	public void buildMB(long[][] block)
 	{
 		int N = block.length;
@@ -50,6 +78,10 @@ public class MBFrame extends JFrame {
 				add(new BlockPanel((int)block[i][j]));
 		repaint();
 	}
+	/**
+	 * Constructs the window based on the values in block
+	 * @param block NxN matrix of doubles
+	 */
 	public void buildMB(double[][] block)
 	{
 		int N = block.length;

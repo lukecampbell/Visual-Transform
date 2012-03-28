@@ -5,6 +5,10 @@ import javax.swing.JPanel;
 
 
 public class BlockPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1864042012855496240L;
 	private int luma;
 	public BlockPanel(int luma) {
 		if(luma>=0 && luma < 256)
