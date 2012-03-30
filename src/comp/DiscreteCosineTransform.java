@@ -72,7 +72,7 @@ public class DiscreteCosineTransform {
 					C = Math.sqrt(1.0/(N*1.0));
 				else
 					C = Math.sqrt(2.0/(N*1.0));
-				A[i][j] = C * Math.cos(((2.0 * j + 1.0) * i * Math.PI)/(8.0));
+				A[i][j] = C * Math.cos(((2.0 * j + 1.0) * i * Math.PI)/(2. * N));
     		}
     	}
     	double[][] Y = new double[N][N];
@@ -130,7 +130,7 @@ public class DiscreteCosineTransform {
     	for(int i=0;i<N;i++)
     	{
     		for(int j=0;j<M;j++)
-    			System.out.printf("%4f", matrix[i][j]);
+    			System.out.printf("%8.2f", matrix[i][j]);
     		System.out.println();
     	}
     }
@@ -147,7 +147,7 @@ public class DiscreteCosineTransform {
     	for(int i=0;i<N;i++)
     	{
     		for(int j=0;j<M;j++)
-    			System.out.printf("%4d", matrix[i][j]);
+    			System.out.printf("%8d", matrix[i][j]);
     		System.out.println();
     	}
     	

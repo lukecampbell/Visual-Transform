@@ -11,8 +11,35 @@ public class UnitTests {
 	 */
 
     public static void main(String[] args) { 
-    	testVisual(20, 1);
+    	//testVisual(3, 1);
+    	testCrafted(20, 1);
     	
+    }
+    public static boolean testCrafted(double quant, double k)
+    {
+    	double[][] X = new double[4][4];
+    	for(int i=0;i<4;i++)
+    		for(int j=0;j<4;j++)
+    			X[i][j] = Math.random() * 256;
+    	
+    	new MBFrame(X,"Original");
+    	
+    	double[][] Xt = DiscreteCosineTransform.dct(X);
+    	System.out.println("Before Quantization\n-----------------------------------");
+    	DiscreteCosineTransform.printMatrix(Xt);
+    	long[][] Yt = DiscreteCosineTransform.quantize(Xt);
+    	for(int i=0;i<4;i++)
+    		for(int j=0;j<4;j++)
+    		{
+    			if(i > 1 || j > 1)
+	    			if(Math.abs(Yt[i][j]) < quant)
+	    				Yt[i][j] = 0;
+    		}
+    	System.out.println("After Quantization\n-----------------------------------");
+    	DiscreteCosineTransform.printMatrix(Yt);
+    	double[][] Y = DiscreteCosineTransform.idct(Yt);
+    	new MBFrame(Y, "Reconstructed");
+    	return true;
     }
     /**
      * Performs a test of the visual capabilities as well as performing a DCT and iDCT with accuracy
@@ -36,6 +63,8 @@ public class UnitTests {
     	 * ----------------------------------------------------------------------
     	 */
     	double[][] Y = DiscreteCosineTransform.dct(X);
+    	System.out.println("After Transform\n--------------------------");
+    	DiscreteCosineTransform.printMatrix(Y);
     	long[][] Y_prime = DiscreteCosineTransform.quantize(Y);
     	for(int i=0;i<4;i++)
     		for(int j=0;j<4;j++)
@@ -45,12 +74,12 @@ public class UnitTests {
     					Y_prime[i][j] = 0;
     		}
     	// Print the Matrix to the console, the values are too extreme to be represented visually
+    	System.out.println("After Quantization\n--------------------------");
     	DiscreteCosineTransform.printMatrix(Y_prime);
     	// Inverse DCT of the matrix
     	double[][] X_prime = DiscreteCosineTransform.idct(Y_prime);
     	new MBFrame(X_prime, "Reconstructed");
-    	System.out.println("--------------------------");
-    	DiscreteCosineTransform.printMatrix(Y_prime);
+    	
     	for(int i=0;i<4;i++)
     		for(int j=0;j<4;j++)
     		{
