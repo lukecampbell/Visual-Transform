@@ -13,6 +13,7 @@ Copying
 --------
 Java Visual Transform, demonstration application used to demonstrate an
 introduction to image compression.
+
 Copyright (C) 2012  Luke Campbell
 
 This program is free software: you can redistribute it and/or modify
